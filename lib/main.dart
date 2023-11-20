@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,28 +13,39 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo', 
-      theme: ThemeData(
-        backgroundColor: Color.fromARGB(255, 11, 54, 90), 
-        useMaterial3: true,
-      ),
-      home: AnimatedSplashScreen(
-        splash: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Relaxing Ears',
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-            ),
-          ],
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      home: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 95, 56, 173),
+              Color.fromARGB(255, 0, 0, 255),
+            ],
+          ),
         ),
-        nextScreen:  HomeScreen(),
-        backgroundColor: Colors.deepPurple,
-        duration: 2000,
-        splashTransition: SplashTransition.fadeTransition, 
+        child: AnimatedSplashScreen(
+          splash: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Relaxing Ears',
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          nextScreen: HomeScreen(),
+          backgroundColor: Color.fromARGB(255, 90, 47, 190),
+          duration: 2000,
+          splashTransition: SplashTransition.slideTransition,
+        ),
       ),
     );
   }
 }
-
-
